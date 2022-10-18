@@ -32,7 +32,7 @@ COPY poetry.lock pyproject.toml ./
 
 RUN poetry install --only main --no-root
 
-COPY ./src ./src/
+COPY . .
 RUN pwd
 RUN ls
 EXPOSE 9000
