@@ -1,6 +1,5 @@
 version: '3'
 services:
-
   mysql:
     image: mysql:8.0.25
     container_name: mail-10-minutes-mysql2
@@ -12,10 +11,8 @@ services:
       MYSQL_PASSWORD: '1'
       user: 'user'
       LANG: C.UTF-8
-    user: 'root'  
+    user: 'root'
     volumes:
       - ./.docker/mysql:/var/lib/mysql
     ports:
       - 3101:3306
-
-  

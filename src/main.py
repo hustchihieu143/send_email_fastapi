@@ -1,5 +1,8 @@
 import sys
-sys.path.insert(0,'/home/chihieu/project_web/sendmail_fastapi/')
+from os.path import join, dirname
+forder = join(dirname(__file__), './')
+sys.path.insert(0, forder)
+
 from fastapi import FastAPI
 from src.routes.email import email_router
 
