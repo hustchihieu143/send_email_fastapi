@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "sendmail-fastapi"
+version = "0.1.0"
+description = ""
+authors = ["hustchihieu143 <chihieusky@gmail.com>"]
+readme = "README.md"
+packages = [{include = "sendmail_fastapi"}]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+fastapi = "^0.85.0"
+uvicorn = "^0.18.3"
+SQLAlchemy = "^1.4.41"
+python-dotenv = "^0.21.0"
+PyMySQL = "^1.0.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
