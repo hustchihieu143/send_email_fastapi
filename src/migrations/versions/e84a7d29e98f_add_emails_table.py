@@ -1,8 +1,8 @@
 """add emails table
 
-Revision ID: 8dc1e06a5918
+Revision ID: e84a7d29e98f
 Revises: 
-Create Date: 2022-10-14 12:02:20.782690
+Create Date: 2022-10-21 23:09:35.352309
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '8dc1e06a5918'
+revision = 'e84a7d29e98f'
 down_revision = None
 branch_labels = None
 depends_on = None

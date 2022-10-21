@@ -1,5 +1,9 @@
 import sys
-sys.path.insert(0,'/home/chihieu/project_web/sendmail_fastapi/')
+from os.path import join, dirname
+
+forder = join(dirname(__file__), '../../')
+sys.path.insert(0, forder)
+print(sys.path)
 from src.config import get_settings
 from logging.config import fileConfig
 
