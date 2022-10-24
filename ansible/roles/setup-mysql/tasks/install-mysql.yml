@@ -1,0 +1,16 @@
+---
+- name: Ansible apt-get to get install mysql
+  become: true
+  apt:
+    name:
+      - python3-pip
+      - mysql-server
+      - mysql-client
+      - python3-mysqldb
+    state: present
+    force_apt_get: yes
+
+- name: start service mysql
+  service:
+    name: 'mysql'
+    state: started

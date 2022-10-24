@@ -1,0 +1,22 @@
+---
+- name: Ansible apt-get to get install haproxy
+  become: true
+  apt:
+    name:
+      - haproxy
+    state: present
+    force_apt_get: yes
+
+- name: config file haproxy.cfg
+  become: true
+  copy:
+    src: ./config-haproxy.cfg
+    dest: /etc/haproxy/haproxy.cfg
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
+
+- name: starting haproxy services
+  service:
+    name: 'haproxy'
+    state: started

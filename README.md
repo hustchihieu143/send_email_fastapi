@@ -7,7 +7,7 @@
 1. Copy `.env.example` to `.env` by running `cp .env.example .env`.
 2. Change variables in the `.env` file to your requirements.
 3. Create your modules in the `app` folder. It typically consists of router (`router.py`), data transfer objects (`dtos.py`), database models (`models.py`), and a service (`<module_name>_service.py`) to handle business logic.
-4. Create database migration files by running `poetry run alembic revision --autogenerate -m 'add emails table'`.
+4. Create database migration files by running `poetry run alembic revision -m "create account table"`.
 5. Apply the migrations by running `poetry run alembic upgrade head`.
 6. Run the app in dev mode: `poetry run task dev`
 

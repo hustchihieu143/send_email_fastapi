@@ -1,0 +1,16 @@
+[haproxy]
+123.31.39.221 ansible_user=root
+
+[backend]
+123.31.39.91 ansible_user=root
+123.31.39.151 ansible_user=root
+
+[mysql]
+123.31.39.10 ansible_user=root
+123.31.39.100 ansible_user=root
+
+[mysql1]
+123.31.39.10 ansible_user=root
+
+[mysql2]
+123.31.39.100 ansible_user=root

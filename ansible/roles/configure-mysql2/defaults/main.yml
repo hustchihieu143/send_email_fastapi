@@ -1,0 +1,5 @@
+server_id: 2
+db: sendemail
+user: replicator
+password: replicator_pass
+address: 123.31.39.10

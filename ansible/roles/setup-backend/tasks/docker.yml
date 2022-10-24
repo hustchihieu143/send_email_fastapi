@@ -1,0 +1,53 @@
+---
+- name: Install docker packages
+  become: true
+  apt:
+    name:
+      [
+        'apt-transport-https',
+        'ca-certificates',
+        'curl',
+        'software-properties-common',
+      ]
+    state: present
+    update_cache: yes
+  tags:
+    - docker
+
+- name: Add Docker s GPG key for ubuntu from official site
+  become: true
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+  tags:
+    - docker
+
+- name: Configure Docker for ubuntu stable repository
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable
+    state: present
+    update_cache: yes
+  tags:
+    - docker
+
+- name: Update apt packages
+  become: true
+  apt:
+    update_cache: yes
+  tags:
+    - docker
+
+- name: Install docker-ce
+  become: true
+  apt:
+    name: docker-ce
+    state: present
+    update_cache: yes
+  tags:
+    - docker
+
+- name: Install docker-compose from official github repo
+  get_url:
+    url: https://github.com/docker/compose/releases/download/1.29.2/docker-compose-Linux-x86_64
+    dest: /usr/local/bin/docker-compose
+    mode: 'u+x,g+x'

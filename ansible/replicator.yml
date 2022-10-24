@@ -1,0 +1,41 @@
+---
+- hosts: mysql2
+  vars:
+    db: sendemail
+    user: replicator
+    password: replicator_pass
+    address_mysql1: 123.31.39.10
+
+  tasks:
+    - name: 'MySQL | Get master file and position | mysql1'
+      mysql_replication:
+        login_host: '{{ address_mysql1 }}'
+        login_user: '{{ user }}'
+        login_password: '{{ password }}'
+        mode: getmaster
+      register: mysql_repl_mysql1
+
+    - name: 'MySQL | Change Master Status | mysql2'
+      command: mysql -u root -e "STOP SLAVE; CHANGE MASTER TO MASTER_HOST='{{ address_mysql1 }}', MASTER_USER='{{ user }}', MASTER_PASSWORD='{{ password }}', MASTER_LOG_FILE='{{ mysql_repl_mysql1.File }}', MASTER_LOG_POS = {{ mysql_repl_mysql1.Position }}; START SLAVE;"
+
+- hosts: mysql1
+  vars:
+    db: replica
+    user: replicator
+    password: replicator_pass
+    address_mysql2: 123.31.39.100
+  tasks:
+    - name: 'MySQL | Get master file and position | mysql2'
+      mysql_replication:
+        login_host: '{{ address_mysql2 }}'
+        login_user: '{{ user }}'
+        login_password: '{{ password }}'
+        mode: getmaster
+      register: mysql_repl_mysql2
+    - name: 'MySQL | Change Master Status | mysql1'
+      command: mysql -u root -e "STOP SLAVE; CHANGE MASTER TO MASTER_HOST='{{ address_mysql2 }}', MASTER_USER='{{ user }}', MASTER_PASSWORD='{{ password }}', MASTER_LOG_FILE='{{ mysql_repl_mysql2.File }}', MASTER_LOG_POS = {{ mysql_repl_mysql2.Position }}; START SLAVE;"
+
+    - name: 'MySQL | Create database'
+      mysql_db:
+        name: '{{ db }}'
+        state: present
