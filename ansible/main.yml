@@ -1,27 +1,11 @@
 ---
-# - hosts: haproxy
-#   become: no
-#   become_method: sudo
+- hosts: mysql
+  become: no
+  become_method: sudo
 
-#   roles:
-#     - role: setup-haproxy
-#       become: yes
-
-# - hosts: backend
-#   become: no
-#   become_method: sudo
-
-#   roles:
-#     - role: setup-backend
-#       become: yes
-
-# - hosts: mysql
-#   become: no
-#   become_method: sudo
-
-#   roles:
-#     - role: setup-mysql
-#       become: yes
+  roles:
+    - role: setup-mysql
+      become: yes
 
 - hosts: mysql1
   become: no
@@ -37,4 +21,20 @@
 
   roles:
     - role: configure-mysql2
+      become: yes
+
+- hosts: backend
+  become: no
+  become_method: sudo
+
+  roles:
+    - role: setup-backend
+      become: yes
+
+- hosts: haproxy
+  become: no
+  become_method: sudo
+
+  roles:
+    - role: setup-haproxy
       become: yes

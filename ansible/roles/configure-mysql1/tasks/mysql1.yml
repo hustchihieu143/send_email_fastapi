@@ -1,30 +1,30 @@
 ---
-# - name: MySQL | Starting & Enabling
-#   service:
-#     name: mysql
-#     state: started
-#     enabled: yes
+- name: MySQL | Starting & Enabling
+  service:
+    name: mysql
+    state: started
+    enabled: yes
 
-# - name: copy mysqld.cnf
-#   template:
-#     src: 'templates/mysqld.cnf'
-#     dest: '/etc/mysql/mysql.conf.d/mysqld.cnf'
+- name: copy mysqld.cnf
+  template:
+    src: 'templates/mysqld.cnf'
+    dest: '/etc/mysql/mysql.conf.d/mysqld.cnf'
 
-# - name: MySQL | Restarting
-#   service:
-#     name: mysql
-#     state: restarted
+- name: MySQL | Restarting
+  service:
+    name: mysql
+    state: restarted
 
-# - name: MySQL | Create user
-#   mysql_user:
-#     name: '{{ user }}'
-#     password: '{{ password }}'
-#     host: '{{ address }}'
-#     priv: '*.*:All,GRANT'
-#     state: present
+- name: MySQL | Create user
+  mysql_user:
+    name: '{{ user }}'
+    password: '{{ password }}'
+    host: '{{ address }}'
+    priv: '*.*:All,GRANT'
+    state: present
 
-# - name: MySQL | Create user
-#   command: mysql -u root -e "CREATE USER '{{ user }}'@'{{ address }}' IDENTIFIED WITH mysql_native_password BY '{{ password }}';"
+- name: MySQL | Create user
+  command: mysql -u root -e "CREATE USER '{{ user }}'@'{{ address }}' IDENTIFIED WITH mysql_native_password BY '{{ password }}';"
 
 - name: grant all for user
   command: mysql -u root -e "grant all privileges on *.* TO '{{ user }}'@'{{ address }}'; flush privileges;"
