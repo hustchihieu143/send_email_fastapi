@@ -15,8 +15,8 @@
     name: mysql
     state: restarted
 
-# - name: MySQL | Create user
-#   command: mysql -u root -e "CREATE USER '{{ user }}'@'{{ address }}' IDENTIFIED WITH mysql_native_password BY '{{ password }}';"
+- name: MySQL | Create user
+  command: mysql -u root -e "CREATE USER '{{ user }}'@'{{ address }}' IDENTIFIED WITH mysql_native_password BY '{{ password }}';"
 
 - name: grant all for user
   command: mysql -u root -e "grant all privileges on *.* TO '{{ user }}'@'{{ address }}'; flush privileges;"
