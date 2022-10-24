@@ -23,6 +23,22 @@
     - role: configure-mysql2
       become: yes
 
+- hosts: mysql2
+  become: no
+  become_method: sudo
+
+  roles:
+    - role: replicator-mysql2
+      become: yes
+
+- hosts: mysql1
+  become: no
+  become_method: sudo
+
+  roles:
+    - role: replicator-mysql1
+      become: yes
+
 - hosts: backend
   become: no
   become_method: sudo

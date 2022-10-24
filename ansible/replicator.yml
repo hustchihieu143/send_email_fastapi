@@ -20,7 +20,7 @@
 
 - hosts: mysql1
   vars:
-    db: replica
+    db: sendemail
     user: replicator
     password: replicator_pass
     address_mysql2: 123.31.39.100

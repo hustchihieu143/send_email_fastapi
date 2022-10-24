@@ -1,0 +1,4 @@
+db: sendemail
+user: replicator
+password: replicator_pass
+address_mysql1: 123.31.39.10

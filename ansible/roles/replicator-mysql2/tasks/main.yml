@@ -1,0 +1,2 @@
+---
+- include_tasks: replicator-mysql2.yml
