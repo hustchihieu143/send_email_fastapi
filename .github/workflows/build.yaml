@@ -9,3 +9,9 @@ jobs: # chuoi cac task dinh nghia de chay
     steps: # tasks nho trong job day
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Login Docker Hub
+        uses: docker/login-action@v1
+        with: # truyen thong tin tham so
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{  secrets.DOCKERHUB_ACCESS_TOKEN}}
