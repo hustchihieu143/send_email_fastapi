@@ -35,7 +35,7 @@ jobs: # chuoi cac task dinh nghia de chay
 
   update_ssh_backend:
     name: Telling server backend to Update
-    needs: 'push_to_registry'
+    needs: 'docker'
     runs-on: ubuntu-latest
     steps:
       - name: executing remote ssh commands using password
