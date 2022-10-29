@@ -1,0 +1,11 @@
+name: send-email
+on:
+  push: # event push
+    branches: [master]
+
+jobs: # chuoi cac task dinh nghia de chay
+  docker:
+    runs-on: ubuntu-latest # moi truong chay
+    steps: # tasks nho trong job day
+      - name: Checkout
+        uses: actions/checkout@v2
