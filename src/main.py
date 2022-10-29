@@ -15,4 +15,4 @@ app.include_router(email_router)
 
 @app.get("/")
 def hello(): 
-  return "hello"
+  return "hello update ci cd"
