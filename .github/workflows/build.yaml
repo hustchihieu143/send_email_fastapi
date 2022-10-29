@@ -28,7 +28,7 @@ jobs: # chuoi cac task dinh nghia de chay
           file: ./Dockerfile
           builder: ${{ steps.buildx.outputs.name }}
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/send-email'
+          tags: hustchihieu/send-email'
 
       - name: Verify
         run: echo ${{ steps.docker_build.outputs.digest }}
