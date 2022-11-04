@@ -60,3 +60,7 @@ poetry run task test
 ---
 
 ## Links that might be useful
+
+## Run K6 to stress test
+
+k6 run example_test.js

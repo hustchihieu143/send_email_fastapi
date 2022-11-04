@@ -5,19 +5,17 @@ export let options = {
   insecureSkipTLSVerify: true,
   noConnectionReuse: false,
   stages: [
-    { duration: '2m', target: 100 }, // below normal load
-    { duration: '5m', target: 100 },
-    { duration: '2m', target: 200 }, // normal load
-    { duration: '5m', target: 200 },
-    { duration: '2m', target: 300 }, // around the breaking point
-    { duration: '5m', target: 300 },
-    { duration: '2m', target: 400 }, // beyond the breaking point
-    { duration: '5m', target: 400 },
-    { duration: '10m', target: 0 }, // scale down. Recovery stage.
+    { duration: '10s', target: 100 }, // below normal load
+    { duration: '1m', target: 100 },
+    { duration: '10s', target: 1800 }, // spike to 1400 users
+    { duration: '3m', target: 1800 }, // stay at 1400 for 3 minutes
+    { duration: '10s', target: 100 }, // scale down. Recovery stage.
+    { duration: '3m', target: 100 },
+    { duration: '10s', target: 0 },
   ],
 };
 
 export default () => {
-  http.get('http://localhost:8000/email');
+  http.get('http://123.31.39.221:5050/email');
   sleep(1);
 };
