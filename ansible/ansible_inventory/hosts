@@ -14,3 +14,6 @@
 
 [mysql2]
 123.31.39.100 ansible_user=root
+
+[monitoring]
+14.225.36.122 ansible_user=root
